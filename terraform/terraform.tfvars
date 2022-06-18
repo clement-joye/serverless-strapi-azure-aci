@@ -1,0 +1,6 @@
+project_name="<project_name>"
+location="<location>"
+subscription_id="<azure_subscription_id>"
+image_registry_credential_username="<your_acr_username>"
+image_registry_credential_password="<your_acr_password>"
+image_registry_credential_server="<your_acr_server_name>"

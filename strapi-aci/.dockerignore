@@ -1,0 +1,8 @@
+.cache/
+.git/
+build/
+node_modules/
+data/
+Dockerfile.dev
+Dockerfile.prod
+**/*.ps1
