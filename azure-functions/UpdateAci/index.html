@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<!-- Thanks to Anya Melnyk for the loading animations https://codepen.io/slyka85/pen/QvBQPb" -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Loading ACI</title>
+    <meta name="description" content="Page showing loading animation until ACIs are loaded.">
+    <style>
+        *, *:before, *:after {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: calibri;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        .link {
+            color: grey;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+            color: whitesmoke;
+        }
+        
+        body {
+            background: black;
+        }
+        
+        .container {
+            text-align: center;
+            margin-top: 10%;
+        }
+        
+        section {
+            width: 30%;
+            display: inline-block;
+            text-align: center;
+            min-height: 215px;
+            vertical-align: top;
+            margin: 1%;
+            background: #080915;
+            border-radius: 5px;
+        }
+
+        .text-bloc {
+            display: inline-block;
+            margin: 54px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            section {
+                min-width: 350px;
+            }
+
+            .text-bloc {
+                margin: 54px auto;
+            }
+            
+            .loader {
+                margin: 30px 30px 10px 30px;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+        
+        .loader {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 54px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        /*LOADER-1*/
+        
+        .loader-1 .loader-outter {
+            position: absolute;
+            border: 4px solid #4E26E0;
+            border-left-color: transparent;
+            border-bottom: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            -webkit-animation: loader-1-outter 1s cubic-bezier(.42, .61, .58, .41) infinite;
+            animation: loader-1-outter 1s cubic-bezier(.42, .61, .58, .41) infinite;
+        }
+        
+        .loader-1 .loader-inner {
+            position: absolute;
+            border: 4px solid #4E26E0;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            left: calc(50% - 20px);
+            top: calc(50% - 20px);
+            border-right: 0;
+            border-top-color: transparent;
+            -webkit-animation: loader-1-inner 1s cubic-bezier(.42, .61, .58, .41) infinite;
+            animation: loader-1-inner 1s cubic-bezier(.42, .61, .58, .41) infinite;
+        }
+        
+        /* ----------------      ARROWS      ----------------- */
+
+        .center-con {
+            display: inline-block;
+            margin: 75px;
+        }
+
+        .round {
+            position: relative;
+            border: 3px solid #fff;
+            width: 66px;
+            height: 66px;
+            border-radius: 100%;
+        }
+
+        .span {
+            z-index: 999;
+            height: 3px;
+            margin:1px;
+            width: 20px;
+            background: #fff;
+            transition: 0.4s ease;
+        }
+
+        .span:first-child {
+            display: block;
+            position: absolute;
+            transform: rotate(45deg);
+            left: 25%;
+            bottom: 35%;
+        }
+
+        .span:nth-child(2) {
+            display: block;
+            position: absolute;
+            transform: rotate(-45deg);
+            left: 45%;
+            bottom: 35%;
+        }
+
+        .span:nth-child(3) {
+            display: block;
+            position: absolute;
+            transform: rotate(45deg);
+            left: 25%;
+            bottom: 54%;
+        }
+
+        .span:nth-child(4) {
+            display: block;
+            position: absolute;
+            transform: rotate(-45deg);
+            left: 45%;
+            bottom: 54%;
+        }
+
+        .round:hover span:nth-child(1) {
+            transform: rotate(-135deg);
+        }
+
+        .round:hover span:nth-child(2) {
+            transform: rotate(135deg);
+        }
+
+        .round:hover span:nth-child(3) {
+            transform: rotate(225deg);
+        }
+
+        .round:hover span:nth-child(4) {
+            transform: rotate(-225deg);
+        }
+
+        /* ----------------     KEYFRAMES    ----------------- */
+        
+        @-webkit-keyframes loader-1-outter {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes loader-1-outter {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+        
+        @-webkit-keyframes loader-1-inner {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(-360deg);
+                transform: rotate(-360deg);
+            }
+        }
+        
+        @keyframes loader-1-inner {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(-360deg);
+                transform: rotate(-360deg);
+            }
+        }
+        
+        
+        @-webkit-keyframes dot-jump {
+            0% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+            100% {
+                -webkit-transform: translateY(-15px);
+                transform: translateY(-15px);
+            }
+        }
+        
+        @keyframes dot-jump {
+            0% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+            100% {
+                -webkit-transform: translateY(-15px);
+                transform: translateY(-15px);
+            }
+        }
+        
+        
+        @-webkit-keyframes line-grow {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 75%;
+            }
+        }
+        
+        @keyframes line-grow {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 75%;
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <section> 
+                <img alt="strapi logo" style="position: relative; display: block; object-fit: contain; width: 100%;" src="data:image/webp;base64,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"/>
+                <a id="strapi-ready" class="loader hidden" href="{{strapiUrl}}/admin" target="_blank">
+                    <div class="round">
+                        <span class="span"></span>
+                        <span class="span"></span>
+                        <span class="span"></span>
+                        <span class="span"></span>
+                    </div>
+                </a>
+                <div id="strapi-loading" class="loader loader-1">
+                    <div class="loader-outter"></div>
+                    <div class="loader-inner"></div>
+                </div>
+                <div class="text-bloc">
+                    <span id="strapi-status" style="color: whitesmoke;font-size: 20px;display: block;font-family: Calibri;margin-top: 5px;">Status: Unknown</span>
+                    <a class="link" href="{{strapiStopUrl}}"  style="font-size: 20px; margin-top: 10px; margin-right: 10px; display:inline-block;">Stop</a>
+                    <a class="link" href="{{strapiStartUrl}}" style="font-size: 20px; margin-top: 10px; display:inline;">Start</a>
+                </div>
+            </section>
+            <div>
+                <label id="minutes">00</label>
+                <label id="colon">:</label>
+                <label id="seconds">00</label>
+            </div>
+          </div>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script type="text/javascript">
+            let strapiReady = false;
+            var intervalId;
+            let minutesLabel = document.getElementById("minutes");
+            let secondsLabel = document.getElementById("seconds");
+            let totalSeconds = 0;
+            function setStatus(loading, ready, status) {
+                if(status === "Ready") {
+                    if(!$(loading).hasClass("hidden")){
+                        $(loading).addClass('hidden');
+                    }
+
+                    if($(ready).hasClass("hidden")){
+                        $(ready).removeClass('hidden');
+                    }
+                }
+                else if(status === "Stopped") {
+                    if(!$(loading).hasClass("hidden")){
+                        $(loading).addClass('hidden');
+                    }
+
+                    if(!$(ready).hasClass("hidden")){
+                        $(ready).addClass('hidden');
+                    }
+                }
+                else {
+                    if(!$(ready).hasClass("hidden")){
+                        $(ready).addClass('hidden');
+                    }
+
+                    if($(loading).hasClass("hidden")){
+                        $(loading).removeClass('hidden');
+                    }
+                }
+            }
+            function getContainerGroupStatus() {
+                $.ajax({
+                    url: "{{url}}",
+                    type: "GET",
+                    dataType: 'json',
+                    success: function(data) {
+
+                        if(!data) {
+                            setTimeout(getContainerGroupStatus, 5000);
+                        }
+
+                        if(strapiReady) {
+                            clearInterval(intervalId);
+                            return;
+                        }
+
+                        if(!strapiReady) {
+                            setStatus("#strapi-loading", "#strapi-ready", data.strapi)
+                            $("#strapi-status").text(`Status: ${data.strapi}`)
+                        }
+
+                        if(data.strapi === "Stopped") {
+                            clearInterval(intervalId);
+                            return;
+                        }
+
+                        if(data.strapi === "Running" && !strapiReady) {
+                            var strapiUrl = $("#strapi-ready").attr("href");
+                            getInstanceStatus(strapiUrl, "#strapi-loading", "#strapi-ready", "#strapi-status", "strapi");
+                        }
+
+                        setTimeout(getContainerGroupStatus, 5000);
+                    },
+                    error: function(err) {
+                        console.log(data);
+                        setTimeout(getContainerGroupStatus, 5000);
+                    }
+                });
+            }
+            function getInstanceStatus(url, loading, ready, status, instance) {
+                
+                try {
+                    $.ajax({
+                        url: url,
+                        timeout: 15000,
+                      })
+                      .done(function (jqXHR) {
+                        setStatus(loading, ready, "Ready")
+                        $(status).text(`Status: Ready`)
+
+                        if(instance == "strapi") {
+                            strapiReady = true;
+                        }
+                    });
+                }
+                catch(error) { }
+            }
+            function setTime()
+            {
+                ++totalSeconds;
+                secondsLabel.innerHTML = pad(totalSeconds%60);
+                minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+            }
+            function pad(val)
+            {
+                var valString = val + "";
+                if(valString.length < 2)
+                {
+                    return "0" + valString;
+                }
+                else
+                {
+                    return valString;
+                }
+            }
+            $(document).ready(function() {
+                setTimeout(getContainerGroupStatus, 5000);
+                intervalId = setInterval(setTime, 1000);
+            });</script>
+    </body>
+</html>
+
