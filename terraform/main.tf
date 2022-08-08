@@ -76,6 +76,7 @@ resource "azurerm_function_app" "fa" {
   storage_account_access_key = azurerm_storage_account.sa.primary_access_key
   version                    = "~3"
   https_only                 = true
+  ftps_state                  = "FtpsOnly"
 
   identity { 
     type = "SystemAssigned" 
